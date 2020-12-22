@@ -1,0 +1,9 @@
+{
+    "name": "ziponimport",
+    "displayName": "Zip on Import",
+    "author": "Sgeo",
+    "version": "0.0.1",
+    "launcherVersion": "9.0.0",
+    "description": "Automatically bluezip curations when imported.",
+    "main": "./main.js"
+  }
