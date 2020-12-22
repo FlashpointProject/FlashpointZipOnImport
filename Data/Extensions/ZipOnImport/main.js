@@ -4,6 +4,7 @@ module.exports.activate = () => {
 
     flashpoint.games.onWillImportGame(curationImportState => {
         let curationPath = curationImportState.curationPath;
+        curationImportState.contentToMove = [];
         let bluezip = child_process.spawn("..\\Utilities\\bluezip\\bluezip", [curationPath, "-o", "..\\Games"]);
         return new Promise((resolve, reject) => {
             bluezip.stdout.on("data", (data) => {
