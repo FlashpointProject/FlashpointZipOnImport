@@ -9,7 +9,8 @@ module.exports.activate = () => {
         curationImportState.contentToMove = curationImportState.contentToMove.filter(([source, dest]) => {
             return path.join(curationPath, "content") !== source; // TODO: Overly reliant on matching Launcher implementation?
         });
-        let bluezip = child_process.spawn("..\\Utilities\\bluezip\\bluezip", [curationPath, "-no", "..\\Games"]);
+        let bluezip_path = path.resolve(flashpoint.config.flashpointPath, "Utilities", "bluezip");
+        let bluezip = child_process.spawn("bluezip", [path.resolve(curationPath), "-no", path.resolve(flashpoint.config.flashpointPath, "Games")], {cwd: bluezip_path});
         return new Promise((resolve, reject) => {
             bluezip.stdout.on("data", (data) => {
                 flashpoint.log.info(`Bluezip output: ${data}`);
